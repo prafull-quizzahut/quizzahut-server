@@ -87,10 +87,10 @@ VALUES
 ('Govind Kulkarni', 'Student', 'Govindkul@gmail.com', '9876543210', 'govind123', 'Electrical engineering', 'VDF College', 'SRTM University', 2023, 2, 'Latur'),
 ('Yatin Chaudhari', 'Student', 'yatindevs@gmail.com', '8765432109', 'yatin555', 'Civil Engineering', 'Nashik College', 'Nashik University', 2022, 4, 'Mumbai'),
 ('Sunil Pandhare', 'Student', 'sunilp@gmail.com', '7654321098', 'sunil222', 'Information Technology', 'DEF College', 'MES University', 2022, 6, 'Sambhajinagar'),
-('Tejas Pawar', 'Student', 'tejaspawar@gmail.com', '9843210987', 'tejiitk@123', 'Mechanical Engineering', 'GHI College', 'PQR University', 2024, 1, 'Pune');
+('Tejas Pawar', 'Student', 'tejaspawar@gmail.com', '9843210987', 'tejiitk@123', 'Mechanical Engineering', 'GHI College', 'PQR University', 2024, 1, 'Pune'),
 ('Adarsh R', 'Student', 'Adarshr01@gmail.com', '7943214657', 'adarshrk@123', 'Computer Engineering', 'GHI College', 'PQR University', 2023, 2, 'chennai');
 
--- Dummy data for Question table (Java subject)
+-- Dummy data for Question table
 INSERT INTO Question (text, image_url, code, options, correct_option, subject, karma, created_by)
 VALUES
 ('What does JVM stand for?', NULL, NULL, 'A. Java Virtual Machine\nB. Java Visual Machine\nC. Java Virtual Memory\nD. Java Visual Memory', 'A', 'Core Java', 5, 3),
@@ -147,68 +147,68 @@ VALUES
 
 --Create(Insert)
 
--- Inserting a new user
-INSERT INTO User (name, role, email, contact, password, branch, college, university, passout_year, current_year, city)
-VALUES ('Prafull', 'Admin', 'prafullq@example.com', '1234567890', 'password123', 'Computer Science', NULL,NULL,NULL, NULL, 'Nashik');
+-- -- Inserting a new user
+-- INSERT INTO User (name, role, email, contact, password, branch, college, university, passout_year, current_year, city)
+-- VALUES ('Prafull', 'Admin', 'prafullq@example.com', '1234567890', 'password123', 'Computer Science', NULL,NULL,NULL, NULL, 'Nashik');
 
--- Inserting a new question for Core Java
-INSERT INTO Question (text, options, correct_option, subject, karma, created_by)
-VALUES ('What is the purpose of the 'finally' block in Java?', 'A. ...', 'B', 'Core Java', 7, 3);
+-- -- Inserting a new question for Core Java
+-- INSERT INTO Question (text, options, correct_option, subject, karma, created_by)
+-- VALUES ('What is the purpose of the 'finally' block in Java?', 'A. ...', 'B', 'Core Java', 7, 3);
 
--- Inserting a new subject
-INSERT INTO Subject (name, exam, added_by, subject_description)
-VALUES ('Database MAnagement', 'CCEE Test', 4, 'Fundamentals of RDBMS');
+-- -- Inserting a new subject
+-- INSERT INTO Subject (name, exam, added_by, subject_description)
+-- VALUES ('Database MAnagement', 'CCEE Test', 4, 'Fundamentals of RDBMS');
 
--- Inserting a new exam
--- Inserting a new exam for Database MAnagement
-INSERT INTO Exam (exam_name, exam_description, added_by, exam_form_website)
-VALUES ('CCEE Test', 'Test your dbms knowledge', 4, 'http://examportal.com/pythonexam2024');
+-- -- Inserting a new exam
+-- -- Inserting a new exam for Database MAnagement
+-- INSERT INTO Exam (exam_name, exam_description, added_by, exam_form_website)
+-- VALUES ('CCEE Test', 'Test your dbms knowledge', 4, 'http://examportal.com/pythonexam2024');
 
--- Inserting a new quiz for database MAnagement
-INSERT INTO QuizDetails (created_by, subject, exam, description, time, karma, attempted_by)
-VALUES (4, 'Database MAnagement', 'CCEE test', 'Practice quiz for database Exam', 40, 6, 1);
+-- -- Inserting a new quiz for database MAnagement
+-- INSERT INTO QuizDetails (created_by, subject, exam, description, time, karma, attempted_by)
+-- VALUES (4, 'Database MAnagement', 'CCEE test', 'Practice quiz for database Exam', 40, 6, 1);
 
--- Inserting a new review for database Exam
-INSERT INTO Review (quiz_id, user_id, karma)
-VALUES (6, 1, 4);
+-- -- Inserting a new review for database Exam
+-- INSERT INTO Review (quiz_id, user_id, karma)
+-- VALUES (6, 1, 4);
 
--- Read (Select) operations
+-- -- Read (Select) operations
 
--- Selecting all users
-SELECT * FROM User;
+-- -- Selecting all users
+-- SELECT * FROM User;
 
--- Selecting questions related to Core Java
-SELECT * FROM Question WHERE subject = 'Core Java';
+-- -- Selecting questions related to Core Java
+-- SELECT * FROM Question WHERE subject = 'Core Java';
 
--- Selecting all subjects
-SELECT * FROM Subject;
+-- -- Selecting all subjects
+-- SELECT * FROM Subject;
 
--- Selecting all exams
-SELECT * FROM Exam;
+-- -- Selecting all exams
+-- SELECT * FROM Exam;
 
--- Selecting quizzes related to Database management
-SELECT * FROM QuizDetails WHERE subject = 'Database Management';
+-- -- Selecting quizzes related to Database management
+-- SELECT * FROM QuizDetails WHERE subject = 'Database Management';
 
--- Selecting all reviews
-SELECT * FROM Review;
+-- -- Selecting all reviews
+-- SELECT * FROM Review;
 
---Update operations
+-- --Update operations
 
--- Updating a question's text
-UPDATE Question SET text = 'What does JVM stand for in Java?' WHERE question_id = 1;
+-- -- Updating a question's text
+-- UPDATE Question SET text = 'What does JVM stand for in Java?' WHERE question_id = 1;
 
--- Updating an exam's description
-UPDATE Exam SET exam_description = 'Test your database skills' WHERE exam_id = 3;
+-- -- Updating an exam's description
+-- UPDATE Exam SET exam_description = 'Test your database skills' WHERE exam_id = 3;
 
---Delete operations
+-- --Delete operations
 
--- Deleting a user
-DELETE FROM User WHERE user_id = 1;
+-- -- Deleting a user
+-- DELETE FROM User WHERE user_id = 1;
 
--- Deleting a question
-DELETE FROM Question WHERE question_id = 2;
+-- -- Deleting a question
+-- DELETE FROM Question WHERE question_id = 2;
 
---we can add as many as per requirement
+-- --we can add as many as per requirement
 
 
 
