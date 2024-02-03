@@ -62,6 +62,7 @@ CREATE TABLE QuizDetails (
     attempted_by INT,
     FOREIGN KEY (created_by) REFERENCES User(user_id)
 );
+
 CREATE TABLE Quizzes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     quiz_id INT,
@@ -95,8 +96,8 @@ INSERT INTO Question (text, image_url, code, options, correct_option, subject, k
 VALUES
 ('What does JVM stand for?', NULL, NULL, 'A. Java Virtual Machine\nB. Java Visual Machine\nC. Java Virtual Memory\nD. Java Visual Memory', 'A', 'Core Java', 5, 3),
 ('Which of the following is not a primitive data type in Java?', NULL, NULL, 'A. int\nB. float\nC. char\nD. string', 'D', 'Java', 6, 3),
-('What is the purpose of the 'finally' block in a try-catch-finally statement?', NULL, NULL, 'A. It is executed if an exception is thrown\nB. It is executed regardless of whether an exception is thrown or not\nC. It is used to catch exceptions\nD. It is used to define custom exceptions', 'B', 'Java', 7, 3),
-('What is the use of 'super' keyword in Java?', NULL, NULL, 'A. To call the superclass constructor\nB. To access the superclass method or field\nC. To invoke the superclass object\nD. To create an object of the superclass', 'B', 'Java', 8, 3);
+('What is the purpose of the finally block in a try-catch-finally statement?', NULL, NULL, 'A. It is executed if an exception is thrown\nB. It is executed regardless of whether an exception is thrown or not\nC. It is used to catch exceptions\nD. It is used to define custom exceptions', 'B', 'Java', 7, 3),
+('What is the use of super keyword in Java?', NULL, NULL, 'A. To call the superclass constructor\nB. To access the superclass method or field\nC. To invoke the superclass object\nD. To create an object of the superclass', 'B', 'Java', 8, 3);
 
 -- Dummy data for Subject table
 INSERT INTO Subject (name, exam, added_by, subject_description)
@@ -110,11 +111,11 @@ VALUES
 -- Dummy data for Exam table
 INSERT INTO Exam (exam_name, exam_description, added_by, exam_form_website)
 VALUES
-('CCEE Test', 'Test your Core Java fundamentals knowledge', 3, 'http://examportal.com/cceetest'),
-('CCAT', 'Test on Data Structures and Algorithms using Java', 2, 'http://examportal.com/ccatdsa'),
-('CCAT', 'Test your programming skills in C', 1, 'http://examportal.com/ccatcprogramming'),
-('CCAT', 'Study of how operating systems work', 4, 'http://examportal.com/ccatos'),
-('CCAT', 'Test your knowledge of computer fundamentals and networking', 5, 'http://examportal.com/ccatcf');
+('CCEE Test', 'Test your Core Java fundamentals knowledge', 3, 'http://cdac.in/cceetest'),
+('CCAT', 'Test on Data Structures and Algorithms using Java', 2, 'http://cdac.in/ccatdsa'),
+('CCAT', 'Test your programming skills in C', 1, 'http://cdac.in/ccatcprogramming'),
+('CCAT', 'Study of how operating systems work', 4, 'http://cdac.in/ccatos'),
+('CCAT', 'Test your knowledge of computer fundamentals and networking', 5, 'http://cdac.in/ccatcf');
 
 
 -- Dummy data for QuizDetails table
