@@ -14,8 +14,10 @@ CREATE TABLE User (
     city VARCHAR(50)
 );
 
+--added quiz_id column
 CREATE TABLE Question (
     question_id INT PRIMARY KEY AUTO_INCREMENT,
+    quiz_id INT,
     text TEXT,
     image_url VARCHAR(255),
     code TEXT,
@@ -25,7 +27,8 @@ CREATE TABLE Question (
     karma INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_by INT,
-    FOREIGN KEY (created_by) REFERENCES User(user_id)
+    FOREIGN KEY (created_by) REFERENCES User(user_id),
+    FOREIGN KEY (quiz_id) REFERENCES QuizDetails(quiz_id)
 );
 
 CREATE TABLE Subject (
@@ -92,12 +95,12 @@ VALUES
 ('Adarsh R', 'Student', 'Adarshr01@gmail.com', '7943214657', 'adarshrk@123', 'Computer Engineering', 'GHI College', 'PQR University', 2023, 2, 'chennai');
 
 -- Dummy data for Question table
-INSERT INTO Question (text, image_url, code, options, correct_option, subject, karma, created_by)
+INSERT INTO Question (quiz_id, text, image_url, code, options, correct_option, subject, karma, created_by)
 VALUES
-('What does JVM stand for?', NULL, NULL, 'A. Java Virtual Machine\nB. Java Visual Machine\nC. Java Virtual Memory\nD. Java Visual Memory', 'A', 'Core Java', 5, 3),
-('Which of the following is not a primitive data type in Java?', NULL, NULL, 'A. int\nB. float\nC. char\nD. string', 'D', 'Java', 6, 3),
-('What is the purpose of the finally block in a try-catch-finally statement?', NULL, NULL, 'A. It is executed if an exception is thrown\nB. It is executed regardless of whether an exception is thrown or not\nC. It is used to catch exceptions\nD. It is used to define custom exceptions', 'B', 'Java', 7, 3),
-('What is the use of super keyword in Java?', NULL, NULL, 'A. To call the superclass constructor\nB. To access the superclass method or field\nC. To invoke the superclass object\nD. To create an object of the superclass', 'B', 'Java', 8, 3);
+(1, 'What does JVM stand for?', NULL, NULL, 'A. Java Virtual Machine\nB. Java Visual Machine\nC. Java Virtual Memory\nD. Java Visual Memory', 'A', 'Core Java', 5, 3),
+(1, 'Which of the following is not a primitive data type in Java?', NULL, NULL, 'A. int\nB. float\nC. char\nD. string', 'D', 'Java', 6, 3),
+(1, 'What is the purpose of the finally block in a try-catch-finally statement?', NULL, NULL, 'A. It is executed if an exception is thrown\nB. It is executed regardless of whether an exception is thrown or not\nC. It is used to catch exceptions\nD. It is used to define custom exceptions', 'B', 'Java', 7, 3),
+(1, 'What is the use of super keyword in Java?', NULL, NULL, 'A. To call the superclass constructor\nB. To access the superclass method or field\nC. To invoke the superclass object\nD. To create an object of the superclass', 'B', 'Java', 8, 3);
 
 -- Dummy data for Subject table
 INSERT INTO Subject (name, exam, added_by, subject_description)
