@@ -1,4 +1,4 @@
-## LoadMatch - lite-server 
+## Qollabra : quizzahut-server 
 
 reference : https://www.bezkoder.com/node-express-sequelize-postgresql/
 
