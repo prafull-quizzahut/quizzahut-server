@@ -1,11 +1,42 @@
 const User = require('../models/userModel');
 
-// Create User
+const bcrypt = require('bcrypt');
+
+// Create User - signup
 exports.createUser = async (req, res) => {
     try {
       const { name, role, email, contact, password, branch, college, university, passout_year, current_year, city } = req.body;
-      const user = await User.create({ name, role, email, contact, password, branch, college, university, passout_year, current_year, city });
+
+      //Hashing password entered by the user
+      const hashPassword = await bcrypt.hash(password, 10);  //10 is saltRounds
+
+      const user = await User.create({ name, role, email, contact, password: hashPassword, branch, college, university, passout_year, current_year, city });
       return res.status(201).json(user);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+  //Login User
+  exports.loginUser = async (req, res) => {
+    try {
+      const { email, password } = req.body;
+    
+      //finding user by email with USer.findOne() method
+      const user = await User.findOne({ where: { email } });
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      
+      // Check password match
+      //"bcrypt.compare" to compare the provided password with the stored password hash.
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      if (!passwordMatch) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+      // Return user details
+      return res.status(200).json(user);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Internal Server Error' });
