@@ -1,8 +1,8 @@
 const User = require('../models/userModel');
-
 const bcrypt = require('bcrypt');
 
 // Create User - signup
+
 exports.createUser = async (req, res) => {
     try {
       const { name, role, email, contact, password, branch, college, university, passout_year, current_year, city } = req.body;
@@ -44,7 +44,7 @@ exports.createUser = async (req, res) => {
   };
   
   // Get All Users
-  exports.getAllUsers = async (req, res) => {
+ exports.getAllUsers = async (req, res) => {
     try {
       const users = await User.findAll();
       return res.status(200).json(users);
@@ -112,4 +112,54 @@ exports.createUser = async (req, res) => {
       console.error(error);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
-  };  
+  };
+
+  /*
+  // Get User by Email
+  exports.getUserByEmail = async (req, res) => {
+    try {
+      const email = req.params.email;
+      const user = await User.findOne({ where: { email } });
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      return res.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+  exports.getUserByContact = async (req, res) => {
+    try {
+      const contact = req.params.contact;
+      const user = await User.findOne({ where: { contact } });
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      return res.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+  exports.getUserByName = async (req, res) => {
+    try {
+      const name = req.params.name;
+      const user = await User.findOne({ where: { name } });
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      return res.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+  */
+
+  
+
+  

@@ -4,23 +4,30 @@ const sequelize = require('../utils/db.js');
 const User = sequelize.define('User', {
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
     name: {
-      type: DataTypes.STRING(50)
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      len: [3, 50]
     },
     role: {
       type: DataTypes.STRING(20)
     },
     email: {
-      type: DataTypes.STRING(255)
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: true,
     },
     contact: {
-      type: DataTypes.STRING(15)
+      type: DataTypes.STRING(15),
+      allowNull: false
     },
     password: {
-      type: DataTypes.STRING(255)
+      type: DataTypes.STRING(255),
+      allowNull: false
     },
     branch: {
       type: DataTypes.STRING(50)
