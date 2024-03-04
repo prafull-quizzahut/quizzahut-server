@@ -6,7 +6,17 @@ const morgan = require("morgan");
 const sequelize = require("./app/utils/db.js");
 require("dotenv").config();
 
-app.use(cors());
+//Define allowed origins
+
+
+const corsOptions = {
+  origin : 'http://localhost:8051',
+  origin: 'https://localhost:3005',
+  optionsSuccessStatus: 200,
+  methods: "GET, POST, PUT, DELETE, PATCH"
+};
+
+app.use(cors(corsOptions));
 app.use(morgan("dev")); //logs
 app.use(express.json()); //converts JSON data
 app.use(bodyParser.urlencoded({ extended: true })); //converts URL encoded data
@@ -19,13 +29,13 @@ app.use((req, res, next) => {
 });
 
 //Swagger setup
-const swaggerJsDoc = require("swagger-jsdoc");
+//const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-const options = require("./swagger.js");
+const swaggerFile = require("./swagger.json");
 
 // Use Swagger UI
-const specs = swaggerJsDoc(options);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+//const specs = swaggerJsDoc(options);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Model Routers
 const userRoutes = require("./app/routes/userRoutes.js");
@@ -41,12 +51,6 @@ app.use('/api/v1', quizRoutes);
 app.use('/api/v1', questionRoutes);
 app.use('/api/v1', subjectRoutes);
 app.use('/api/v1', reviewRoutes);
-
-// // Use Swagger UI
-// const specs = swaggerJsDoc(options);
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-
-
 
 // Initialize Sequelize
 sequelize

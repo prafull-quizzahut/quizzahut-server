@@ -14,7 +14,7 @@ services:
     ports:
       - $POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT
     volumes:
-      - db:/var/lib/postgres
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - testapp
 
@@ -36,9 +36,21 @@ services:
     tty: true
     networks:
       - testapp
+  
+  swagger-ui:
+   image: swaggerapi/swagger-ui
+   restart: unless-stopped
+   ports: 
+      - "8051:8051"
+   environment:
+    - SWAGGER_JSON=/api-docs/swagger.json
+   volumes:
+    - ./swagger.json:/api-docs/swagger.json:ro
+   networks:
+    - testapp
 
 volumes: 
-  db:
+  postgres_data:
 
 networks:
     testapp:
